@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    'events.apps.EventsConfig',
+    'likes.apps.LikesConfig',
+    'profiles.apps.ProfilesConfig',
 ]
 
 AUTH_USER_MODEL = 'core.User'
