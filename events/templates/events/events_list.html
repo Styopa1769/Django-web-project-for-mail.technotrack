@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}Events list {{ events.name }}{% endblock %}
+
+{% block content %}
+    {% for event in events %}
+        {{ event }}
+        {% if not forloop.last %},{% endif %}
+    {% endfor %}
+    {{ username }}
+{% endblock %}
