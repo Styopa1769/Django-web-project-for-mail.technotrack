@@ -4,7 +4,7 @@
 
 {% block content %}
     {% for event in events %}
-        {{ event }}
+        <a href="{% url "events:event_detail" pk=event.id %}">{{ event|default:"def event" }}</a>
         {% if not forloop.last %},{% endif %}
     {% endfor %}
     {{ username }}

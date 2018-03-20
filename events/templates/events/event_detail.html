@@ -1,5 +1,6 @@
 {% extends "events/base_events.html" %}
 
 {% block content %}
+    <a href="{% url "events:events_list" %}">All events</a>
     {% include "events/widgets/event_title.html" with name=event.name %}
 {% endblock %}

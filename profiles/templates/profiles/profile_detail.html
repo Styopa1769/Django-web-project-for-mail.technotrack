@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block title %} This is profiles part of site{% endblock %}
+
+{% block content %}
+    <a href="/">To the main page</a>
+    {% include "profiles/widgets/profile_title.html" with name=user.name %}
+
+{% endblock %}

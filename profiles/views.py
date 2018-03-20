@@ -6,6 +6,12 @@ from django.shortcuts import render, HttpResponse
 # Create your views here.
 
 
-def profile_details(request, user_id):
+def profile_details(request, pk=None):
 
-    return HttpResponse('Hello. You are user with id {}'.format(user_id))
+    context = {}
+    context['user'] = {
+        'name': 'Styopa',
+        'id': pk,
+    }
+    return render(request, 'profiles/profile_detail.html', context)
+    return HttpResponse('This is event {} page'.format(pk))
