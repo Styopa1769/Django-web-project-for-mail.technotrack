@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -14,4 +14,3 @@ def profile_details(request, pk=None):
         'id': pk,
     }
     return render(request, 'profiles/profile_detail.html', context)
-    return HttpResponse('This is event {} page'.format(pk))
