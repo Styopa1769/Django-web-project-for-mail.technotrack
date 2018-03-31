@@ -7,5 +7,7 @@
         <a href="{% url "events:event_detail" pk=event.id %}">{{ event|default:"def event" }}</a>
         {% if not forloop.last %},{% endif %}
     {% endfor %}
+    <br>
+    <a href="/">To the main page</a>
     {{ username }}
 {% endblock %}

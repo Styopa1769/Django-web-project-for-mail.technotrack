@@ -3,6 +3,13 @@
 {% block title %}Main page{% endblock %}
 
 {% block content %}
-    <a href="{% url "events:events_list"%}">To events</a>
+    <a href="{% url "events:events_list" %}">To events</a>
+    <a>
+    <br>
+    You are: <span color="red">{{ user.name }}</span>; Your id is: <span color="red">{{ user.id }}</span>
+    </a>
+    <a href="{% url "profiles:profile_details" user.id %}">
+    to profile page
+    </a>
     {{ username }}
 {% endblock %}
