@@ -4,6 +4,8 @@
 
 {% block content %}
     <a href="{% url "events:events_list" %}">To events</a>
+    <br>
+    <a href="{% url "places:places_list" %}">To places</a>
     <a>
     <br>
     You are: <span color="red">{{ user.name }}</span>; Your id is: <span color="red">{{ user.id }}</span>

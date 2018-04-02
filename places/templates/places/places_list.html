@@ -1,10 +1,10 @@
 {% extends "core/base.html" %}
 
-{% block title %}Events list {{ events.name }}{% endblock %}
+{% block title %}Places list {{ place.name }}{% endblock %}
 
 {% block content %}
-    {% for event in events %}
-        <a href="{% url "places:place_detail" pk=event.id %}">{{ place|default:"def place" }}</a>
+    {% for place in places %}
+        <a href="{% url "places:place_detail" pk=place.id %}">{{ place|default:"def place" }}</a>
         {% if not forloop.last %},{% endif %}
     {% endfor %}
     <br>
