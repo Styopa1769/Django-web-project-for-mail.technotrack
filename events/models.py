@@ -44,8 +44,8 @@ class Comment(models.Model):
     text = models.CharField(max_length=1000,verbose_name='Текст комментария')
 
     class Meta:
-        verbose_name = u'Комментарий'
-        verbose_name_plural = u'Комментарии'
+        verbose_name = u'Комментарий к событию'
+        verbose_name_plural = u'Комментарии к событиям'
         ordering = 'created', 'id'
 
 
