@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Events list {{ events.name }}{% endblock %}
+
+{% block content %}
+    {% for event in events %}
+        <a href="{% url "places:place_detail" pk=event.id %}">{{ place|default:"def place" }}</a>
+        {% if not forloop.last %},{% endif %}
+    {% endfor %}
+    <br>
+    <a href="/">To the main page</a>
+    {{ username }}
+{% endblock %}

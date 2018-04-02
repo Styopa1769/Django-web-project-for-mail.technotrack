@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^events/', include('events.urls', namespace='events')),
     url(r'^profile/', include('profiles.urls', namespace='profiles')),
+    url(r'^places/', include('places.urls', namespace='places')),
 
 ]

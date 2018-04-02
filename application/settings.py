@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'likes.apps.LikesConfig',
     'profiles.apps.ProfilesConfig',
+    'places.apps.PlacesConfig'
 ]
 
 AUTH_USER_MODEL = 'core.User'

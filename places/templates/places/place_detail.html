@@ -1,0 +1,6 @@
+{% extends "events/base_events.html" %}
+
+{% block content %}
+    <a href="{% url "places:places_list" %}">All places</a>
+    {% include "events/widgets/place_title.html" with name=place.name %}
+{% endblock %}
