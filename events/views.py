@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import reverse, render, get_object_or_404, redirect
 from .models import Event
 from django import forms
+from django.views.generic import UpdateView, CreateView
 
 
 class EventForm(forms.ModelForm):
@@ -13,49 +14,28 @@ class EventForm(forms.ModelForm):
         fields = 'name',
 
 
-def event_create(request):
-    event = Event()
+class EventCreate(CreateView):
 
-    if request.method == 'GET':
-        form = EventForm(instance=event)
-        return render(request,
-                      'events/event_create.html',
-                      {'form': form}
-                      )
-    elif request.method == 'POST':
-        form = EventForm(request.POST, instance=event)
-        if form.is_valid():
-            event = form.save(commit=False)
-            event.author = request.user
-            event.save()
-            return redirect('events:event_detail', pk=event.id)
-        else:
-            return render(request,
-                          'events/event_create.html',
-                          {'form': form}
-                          )
+    model = Event
+    fields = 'name',
+    template_name = 'events/event_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        super(EventCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('events:event_detail', kwargs={'pk':self.object.pk})
 
 
-def event_edit(request, pk=None):
+class EventEdit(UpdateView):
 
-    event = get_object_or_404(Event, id=pk, author=request.user)
-    if request.method == 'GET':
-        form = EventForm(instance=event)
-        return render(request,
-                      'events/event_edit.html',
-                      {'form': form, 'event': event}
-                      )
-    elif request.method == 'POST':
-        form = EventForm(request.POST, instance=event)
-        if form.is_valid():
-            event = form.save()
-            return redirect('events:event_detail', pk=event.id)
-        else:
-            return render(request,
-                          'events/event_edit.html',
-                          {'form': form, 'event': event}
-                          )
+    model = Event
+    fields = 'name',
+    template_name = 'events/event_edit.html'
 
+    def get_success_url(self):
+        return reverse('events:event_detail', kwargs={'pk':self.object.pk})
 
 class EventsListForm(forms.Form):
 

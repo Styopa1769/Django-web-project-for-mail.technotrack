@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
 from core.views import index
-from events.views import events_list, event_edit, event_create, event_detail
+from events.views import events_list, EventEdit, EventCreate, event_detail
 
 urlpatterns = [
     url(
@@ -12,8 +12,8 @@ urlpatterns = [
     url(r'^$', events_list, name="events_list"),
     url(
         r'^edit/(?P<pk>\d+)/$',
-        event_edit,
+        EventEdit.as_view(),
         name="event_edit"
     ),
-    url(r'^create/$', event_create, name="event_create")
+    url(r'^create/$', EventCreate.as_view(), name="event_create")
 ]
