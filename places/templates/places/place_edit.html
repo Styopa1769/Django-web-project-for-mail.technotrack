@@ -1,0 +1,11 @@
+{% extends "places/base_places.html" %}
+
+{% block title %}Редактирование места {{ place }}{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Редактировать место">
+    </form>
+{% endblock %}

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.conf import settings
+from places.models import Place
 
 
 class Event(models.Model):
@@ -16,6 +17,18 @@ class Event(models.Model):
     is_archive = models.BooleanField(default=False, verbose_name=u'Событие в архиве')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    destination = models.ManyToManyField(
+        Place,
+        blank=True,
+        related_name='destinations',
+        verbose_name=u'Точка назначения'
+    )
+    departurePoint = models.ManyToManyField(
+        Place,
+        blank=True,
+        related_name='departurePoints',
+        verbose_name=u'Точка отправления'
+    )
 
     class Meta:
         verbose_name = u'Событие'

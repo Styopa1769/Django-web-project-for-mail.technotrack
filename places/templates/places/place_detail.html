@@ -1,6 +1,10 @@
-{% extends "places/base_events.html" %}
+{% extends "places/base_places.html" %}
 
 {% block content %}
     <a href="{% url "places:places_list" %}">All places</a>
+    {% if place.author == user %}
+    <a href="{% url "places:place_edit" pk=place.id %}">Редактировать место</a>
+    <br>
+    {% endif %}
     {% include "places/widgets/place_title.html" with name=place.name %}
 {% endblock %}

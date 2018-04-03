@@ -3,6 +3,18 @@
 {% block title %}Places list {{ place.name }}{% endblock %}
 
 {% block content %}
+    <div>
+        <form action="" method="get">
+        Sort:
+        <select name="sort">
+            <option {% if sort == "name"%}selected{% endif %} value="name"> By Name </option>
+            <option {% if sort == "id" %}selected{% endif %} value="id"> By ID </option>
+        </select>
+        Search:
+        <input name="search">
+        <button>Go</button>
+        </form>
+    </div>
     {% for place in places %}
         <a href="{% url "places:place_detail" pk=place.id %}">{{ place|default:"def place" }}</a>
         {% if not forloop.last %},{% endif %}

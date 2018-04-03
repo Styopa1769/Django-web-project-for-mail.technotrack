@@ -4,8 +4,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 
-from events.models import Event
-
 
 class Place(models.Model):
 
@@ -45,6 +43,7 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     text = models.CharField(max_length=1000,verbose_name='Текст комментария')
+
     class Meta:
         verbose_name = u'Комментарий к месту'
         verbose_name_plural = u'Комментарии к местам'
