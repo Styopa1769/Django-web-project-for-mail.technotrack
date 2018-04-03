@@ -16,18 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from core.views import index
-from django.contrib.auth.views import LogoutView
-from core.views import LoginView
+from django.contrib.auth import views as auth_views
 from core import views as core_views
 
 urlpatterns = [
 
-    url(r'^core/login/$', core_views.Login.as_view(), name='login'),
-
+    url(r'^core/login/$', auth_views.login, {'template_name': 'core/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'core/logout.html'}, name='logout'),
+    url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
+    url(r'^$', index, name='home'),
     url(r'^events/', include('events.urls', namespace='events')),
-    url(r'^profile/', include('profiles.urls', namespace='profiles')),
+    url(r'^profile/', include('profiles.urls', namespace='profiles'), name='profiles'),
     url(r'^places/', include('places.urls', namespace='places')),
 
 ]
