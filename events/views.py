@@ -22,7 +22,8 @@ class EventCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        super(EventCreate, self).form_valid(form)
+        return super(EventCreate, self).form_valid(form)
+
 
     def get_success_url(self):
         return reverse('events:event_detail', kwargs={'pk':self.object.pk})
@@ -31,7 +32,7 @@ class EventCreate(CreateView):
 class EventEdit(UpdateView):
 
     model = Event
-    fields = 'name',
+    fields = 'name', 'destination', 'departurePoint'
     template_name = 'events/event_edit.html'
 
     def get_success_url(self):

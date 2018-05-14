@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.contrib.contenttypes.fields import GenericRelation
 
 from django.db import models
 from django.conf import settings
 from places.models import Place
-
+from likes.models import Like
 
 class Event(models.Model):
 
+    likes = GenericRelation(Like)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='events',
