@@ -1,9 +1,14 @@
 {% extends "events/base_events.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-    <input type="submit" value="Создать событие">
-    </form>
+<div class="row">
+    <div class="col-6">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+        <input type="submit" value="Создать событие">
+        </form>
+    </div>
+</div>
 {% endblock %}

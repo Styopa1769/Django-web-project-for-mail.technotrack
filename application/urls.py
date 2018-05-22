@@ -18,6 +18,9 @@ from django.contrib import admin
 from core.views import index
 from django.contrib.auth import views as auth_views
 from core import views as core_views
+from django.conf import settings
+from django.contrib.staticfiles import views
+
 
 urlpatterns = [
 
@@ -32,3 +35,10 @@ urlpatterns = [
     url(r'^likes/', include('likes.urls', namespace='likes')),
 
 ]
+
+
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^static/(?P<path>.*)$', views.serve),
+    ]

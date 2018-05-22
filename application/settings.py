@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'likes.apps.LikesConfig',
     'profiles.apps.ProfilesConfig',
-    'places.apps.PlacesConfig'
+    'places.apps.PlacesConfig',
+    'crispy_forms',
 ]
 
 AUTH_USER_MODEL = 'core.User'
@@ -131,3 +132,4 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
