@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.contenttypes.fields import GenericRelation
+from django.forms import ModelForm, ValidationError
 
 from django.db import models
 from django.conf import settings
 from places.models import Place
 from likes.models import Like
 
-class Event(models.Model):
 
+class Event(models.Model):
     likes = GenericRelation(Like)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -42,7 +43,6 @@ class Event(models.Model):
 
 
 class Comment(models.Model):
-
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='comments_for_events',
@@ -56,7 +56,7 @@ class Comment(models.Model):
     is_archive = models.BooleanField(default=False, verbose_name=u'Комментарий в архиве')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    text = models.CharField(max_length=1000,verbose_name='Текст комментария')
+    text = models.CharField(max_length=1000, verbose_name='Текст комментария')
 
     class Meta:
         verbose_name = u'Комментарий к событию'
@@ -79,3 +79,9 @@ class Tag(models.Model):
         verbose_name = u'Тэг'
         verbose_name_plural = u'Тэги'
         ordering = 'created', 'id'
+
+
+class EventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ["name"]

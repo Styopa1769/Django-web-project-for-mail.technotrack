@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from core.views import index
 from events.views import events_list, EventEdit, EventCreate, event_detail
+from events.models import EventForm
 
 urlpatterns = [
     url(

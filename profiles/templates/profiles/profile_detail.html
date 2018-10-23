@@ -4,6 +4,6 @@
 
 {% block content %}
     <a href="/">To the main page</a>
-    {% include "profiles/widgets/profile_title.html" with name=user.name %}
+    {% include "profiles/widgets/profile_title.html" with first_name=user.first_name last_name=user.last_name %}
 
 {% endblock %}

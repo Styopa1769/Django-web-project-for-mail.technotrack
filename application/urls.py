@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'^profile/', include('profiles.urls', namespace='profiles'), name='profiles'),
     url(r'^places/', include('places.urls', namespace='places')),
     url(r'^likes/', include('likes.urls', namespace='likes')),
+    url(r'api/', include('api.urls',namespace='api')),
+    url(r'',include('social_django.urls'))
 
 ]
 
